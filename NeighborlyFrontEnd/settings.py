@@ -16,4 +16,4 @@ API_VERSION = 'v1'
 #API_URL = " https://neighborlyapi.azurewebsites.net/api/"
 
 # for local host if Azure functions served locally
-API_URL = "https://pj2myneighborlyapiv1.azurewebsites.net/api"
+API_URL = "http://20.78.249.91/api"

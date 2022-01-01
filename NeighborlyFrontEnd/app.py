@@ -8,8 +8,8 @@ import json
 from feedgen.feed import FeedGenerator
 from flask import make_response
 from urllib.parse import urljoin
-from werkzeug.contrib.atom import AtomFeed
-
+#from werkzeug.contrib.atom import AtomFeed
+from feedwerk.atom         import AtomFeed, FeedEntry
 app = Flask(__name__)
 Bootstrap(app)
 
@@ -46,7 +46,7 @@ def rss():
     fg = FeedGenerator()
     fg.title('Feed title')
     fg.description('Feed Description')
-    fg.link(href='https://neighborly-client-v1.azurewebsites.net/')
+    fg.link(href='http://rss.cnn.com/rss/cnn_us.rss')
     
 
     response = requests.get(settings.API_URL + '/getAdvertisements')
