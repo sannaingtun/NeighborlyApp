@@ -1,11 +1,12 @@
-# To enable ssh & remote debugging on app service change the base image to the one below
-# FROM mcr.microsoft.com/azure-functions/python:3.0-python3.8-appservice
-FROM mcr.microsoft.com/azure-functions/python:3.0-python3.8
+# syntax=docker/dockerfile:1
 
-ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+FROM python:3.8-slim-buster
 
-COPY requirements.txt /
-RUN pip install -r /requirements.txt
+WORKDIR /app
 
-COPY . /home/site/wwwroot
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
